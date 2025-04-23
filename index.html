@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pass Example</title>
+    <script>
+        // Function to fetch data from the backend
+        function fetchData() {
+            fetch('/data')  // Endpoint on the server to get data
+                .then(response => response.json())  // Parse the JSON data
+                .then(data => {
+                    // Display the data on the page
+                    document.getElementById('name').textContent = data.name;
+                    document.getElementById('age').textContent = data.age;
+                    document.getElementById('city').textContent = data.city;
+                })
+                .catch(error => console.log('Error:', error));
+        }
+
+        // Fetch the data when the page loads
+        window.onload = fetchData;
+    </script>
+</head>
+<body>
+    <h1>User Data</h1>
+    <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+    <p><strong>Age:</strong> <span id="age">Loading...</span></p>
+    <p><strong>City:</strong> <span id="city">Loading...</span></p>
+</body>
+</html>
